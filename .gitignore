@@ -1,3 +1,35 @@
-build
-tmp
+# 构建目录
+build/
+cmake-build-*/
+
+# 编译输出
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.lib
+*.exe
 *.out
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 临时文件
+tmp/
+*.tmp
+*.log
+
+# 测试输出
+Testing/
+test_results.xml
+
+# 覆盖率
+*.gcov
+*.gcda
+*.gcno
+coverage/
