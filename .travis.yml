@@ -1,0 +1,25 @@
+language: cpp
+compiler:
+- gcc
+- clang
+sudo: false
+addons:
+  apt:
+    packages:
+    - build-essential
+    - cmake
+    - libgtest-dev
+before_install:
+- export CFLAGS="-g -O0"
+- export CXXFLAGS="-g -O0"
+script:
+- mkdir -p build && cd build
+- cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON ..
+- make -j$(nproc)
+- ctest --output-on-failure
+after_failure:
+- cat Testing/Temporary/LastTest.log || true
+env:
+  matrix:
+  - COMPILER=gcc
+  - COMPILER=clang
